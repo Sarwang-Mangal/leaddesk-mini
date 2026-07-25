@@ -2,22 +2,22 @@ import { LeadStatus } from '@/types/lead';
 
 const statusConfig: Record<
   LeadStatus,
-  { label: string; className: string }
+  { label: string; dotColor: string; className: string }
 > = {
   new: {
     label: 'New',
-    className:
-      'bg-blue-100 text-blue-800 ring-1 ring-inset ring-blue-200',
+    dotColor: 'bg-blue-500',
+    className: 'bg-blue-50 text-blue-700 ring-1 ring-inset ring-blue-600/20',
   },
   contacted: {
     label: 'Contacted',
-    className:
-      'bg-amber-100 text-amber-800 ring-1 ring-inset ring-amber-200',
+    dotColor: 'bg-amber-500',
+    className: 'bg-amber-50 text-amber-700 ring-1 ring-inset ring-amber-600/20',
   },
   closed: {
     label: 'Closed',
-    className:
-      'bg-green-100 text-green-800 ring-1 ring-inset ring-green-200',
+    dotColor: 'bg-green-500',
+    className: 'bg-green-50 text-green-700 ring-1 ring-inset ring-green-600/20',
   },
 };
 
@@ -29,8 +29,9 @@ export default function StatusBadge({ status }: StatusBadgeProps) {
   const config = statusConfig[status];
   return (
     <span
-      className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${config.className}`}
+      className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-semibold ${config.className}`}
     >
+      <span className={`h-1.5 w-1.5 rounded-full ${config.dotColor}`} />
       {config.label}
     </span>
   );
