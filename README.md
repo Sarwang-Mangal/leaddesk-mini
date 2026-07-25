@@ -32,7 +32,7 @@ LeadDesk Mini is a full-stack lead-capture product. Visitors submit an enquiry t
 
 | Layer | Tool |
 |---|---|
-| Framework | Next.js 14 (App Router, TypeScript) |
+| Framework | Next.js 16 (App Router, TypeScript) |
 | Styling | Tailwind CSS |
 | Forms | React Hook Form + `@hookform/resolvers` |
 | Validation | Zod (shared schema — browser and server) |
