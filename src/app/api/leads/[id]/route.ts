@@ -2,12 +2,18 @@ import { NextRequest, NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabase-server';
 import { updateStatusSchema } from '@/lib/validation';
 import { Lead } from '@/types/lead';
+import { requireAdmin } from '@/lib/auth';
 
 // -------------------------------------------------------- PATCH /api/leads/:id
 export async function PATCH(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  const auth = await requireAdmin();
+  if (auth.response) {
+    return auth.response;
+  }
+
   try {
     const { id } = await params;
 

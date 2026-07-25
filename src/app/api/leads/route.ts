@@ -2,9 +2,15 @@ import { NextRequest, NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabase-server';
 import { createLeadSchema } from '@/lib/validation';
 import { Lead } from '@/types/lead';
+import { requireAdmin } from '@/lib/auth';
 
 // ------------------------------------------------------------------ GET /api/leads
 export async function GET(request: NextRequest) {
+  const auth = await requireAdmin();
+  if (auth.response) {
+    return auth.response;
+  }
+
   try {
     const { searchParams } = request.nextUrl;
     const q = searchParams.get('q')?.trim() ?? '';
