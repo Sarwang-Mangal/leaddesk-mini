@@ -1,6 +1,5 @@
 # LeadDesk Mini
 
-> Built for the **Digital Heroes Training Task**.
 
 LeadDesk Mini is a full-stack lead-capture application built with Next.js 16 App Router, TypeScript, Tailwind CSS, and Supabase PostgreSQL. Visitors can submit project enquiries through a responsive public landing page, while authorized administrators manage, search, filter, and track leads in a secure, protected dashboard.
 
