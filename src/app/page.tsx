@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import LeadForm from '@/components/LeadForm';
 import Footer from '@/components/Footer';
 
@@ -22,12 +21,6 @@ export default function LandingPage() {
             </div>
             <span className="text-lg font-bold text-slate-900">LeadDesk Mini</span>
           </div>
-          <Link
-            href="/admin"
-            className="rounded-lg border border-slate-300 bg-white px-3.5 py-2 text-sm font-medium text-slate-700 shadow-sm hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-          >
-            Admin →
-          </Link>
         </div>
       </header>
 
