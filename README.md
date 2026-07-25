@@ -1,9 +1,7 @@
 # LeadDesk Mini
 
-> Built for the **Digital Heroes Training Task**.
-
-Live site: _add URL after Vercel deploy_
-Admin dashboard: _add URL after Vercel deploy_
+Live site: https://leaddesk-mini-phi.vercel.app
+Admin dashboard: https://leaddesk-mini-phi.vercel.app/admin
 
 ---
 
@@ -37,7 +35,7 @@ LeadDesk Mini is a full-stack lead-capture product. Visitors submit an enquiry t
 
 | Layer | Tool |
 |---|---|
-| Framework | Next.js 14 (App Router, TypeScript) |
+| Framework | Next.js 16 (App Router, TypeScript) |
 | Styling | Tailwind CSS |
 | Forms | React Hook Form + `@hookform/resolvers` |
 | Validation | Zod (shared schema — browser and server) |
@@ -198,21 +196,6 @@ create index leads_email_idx on public.leads (email);
 - [x] Status dropdown filter isolates leads by status.
 - [x] Updating a lead's status updates PostgreSQL and persists after page refresh.
 - [x] Mobile viewport displays readable stacked lead cards.
-
----
-
-## Loom Walkthrough
-
-📹 **Video Demo**: _[Insert Loom Video Link Here]_
-
----
-
-## Future Production Improvements
-
-- **Supabase Auth Email Templates**: Customize branded HTML templates for password resets and magic links.
-- **Role-Based Access Control (RBAC)**: Extend database schema to support multiple admin roles (e.g., `SuperAdmin`, `Viewer`, `Editor`).
-- **Pagination & Export**: Add server-side pagination for large lead datasets and CSV export functionality for admin reports.
-- **Automated Email Notifications**: Trigger instant email notifications to administrators when a new high-budget lead is submitted via Supabase Database Webhooks.
 
 ---
 
