@@ -1,15 +1,15 @@
 # LeadDesk Mini
 
+> Built for the **Digital Heroes Training Task**.
 
-LeadDesk Mini is a full-stack lead-capture application built with Next.js 16 App Router, TypeScript, Tailwind CSS, and Supabase PostgreSQL. Visitors can submit project enquiries through a responsive public landing page, while authorized administrators manage, search, filter, and track leads in a secure, protected dashboard.
+Live site: _add URL after Vercel deploy_
+Admin dashboard: _add URL after Vercel deploy_
 
 ---
 
-## Live Deployment
+## Overview
 
-- **Landing Page**: [https://leaddesk-mini-phi.vercel.app](https://leaddesk-mini-phi.vercel.app)
-- **Login Page**: [https://leaddesk-mini-phi.vercel.app/login](https://leaddesk-mini-phi.vercel.app/login)
-- **Admin Dashboard**: [https://leaddesk-mini-phi.vercel.app/admin](https://leaddesk-mini-phi.vercel.app/admin)
+LeadDesk Mini is a full-stack lead-capture product. Visitors submit an enquiry through a public landing page; admins manage and track those leads through a private dashboard.
 
 ---
 
@@ -35,67 +35,44 @@ LeadDesk Mini is a full-stack lead-capture application built with Next.js 16 App
 
 ## Tech Stack
 
-| Layer | Tool / Library | Purpose |
-|---|---|---|
-| **Framework** | Next.js 16 (App Router) | Full-stack React framework with SSR & API routes |
-| **Language** | TypeScript | Type safety across client components and server code |
-| **Styling** | Tailwind CSS v4 | Responsive, utility-first UI styling |
-| **Form Management** | React Hook Form | Efficient client-side form state and validation |
-| **Validation** | Zod | Shared schema validation for browser and server |
-| **Database** | Supabase PostgreSQL | Hosted PostgreSQL database with real-time capabilities |
-| **Authentication** | Supabase Auth (`@supabase/ssr`) | Cookie-based SSR sessions & auth management |
-| **Database Client** | `@supabase/supabase-js` | Direct database queries in server API handlers |
-| **Hosting** | Vercel | Production deployment & environment hosting |
+| Layer | Tool |
+|---|---|
+| Framework | Next.js 14 (App Router, TypeScript) |
+| Styling | Tailwind CSS |
+| Forms | React Hook Form + `@hookform/resolvers` |
+| Validation | Zod (shared schema — browser and server) |
+| Database | Supabase PostgreSQL |
+| Database client | `@supabase/supabase-js` |
+| Hosting | Vercel |
 
 ---
 
-## Architecture & Data Flow
+## Local Setup
 
-```mermaid
-flowchart TD
-    subgraph Public Flow
-        Visitor["Public Visitor"] --> LandingPage["Landing Page /"]
-        LandingPage --> ClientValidation["React Hook Form + Zod"]
-        ClientValidation --> PublicAPI["POST /api/leads"]
-        PublicAPI --> ServerValidation["Server Zod Validation"]
-        ServerValidation --> Database[("Supabase PostgreSQL")]
-    end
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/<your-username>/leaddesk-mini.git
+   cd leaddesk-mini
+   ```
 
-    subgraph Protected Admin Flow
-        AdminUser["Admin User"] --> LoginPage["Login Page /login"]
-        LoginPage --> SupabaseAuth["Supabase Auth (Email/Password)"]
-        SupabaseAuth --> SSRCookies["SSR Cookie Session (proxy.ts)"]
-        SSRCookies --> ProtectedDashboard["Protected Dashboard /admin"]
-        ProtectedDashboard --> ProtectedGET["GET /api/leads (auth.getUser + ADMIN_EMAIL)"]
-        ProtectedDashboard --> ProtectedPATCH["PATCH /api/leads/:id (auth.getUser + ADMIN_EMAIL)"]
-        ProtectedGET --> Database
-        ProtectedPATCH --> Database
-    end
-```
+2. **Install dependencies**
+   ```bash
+   npm install --legacy-peer-deps
+   ```
 
----
+3. **Configure environment variables**
+   ```bash
+   cp .env.example .env.local
+   ```
+   Open `.env.local` and fill in your Supabase credentials:
+   ```env
+   SUPABASE_URL=https://your-project.supabase.co
+   SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
+   ```
 
-## Data Model
-
-The application uses a single PostgreSQL table named `leads` with an ENUM type for status tracking.
-
-### `leads` Table Schema
-
-| Column | Type | Rules | Description |
-|---|---|---|---|
-| `id` | `UUID` | Primary Key, `default gen_random_uuid()` | Unique lead identifier |
-| `name` | `VARCHAR(80)` | Required, 2–80 chars | Visitor full name |
-| `email` | `VARCHAR(254)` | Required, valid email | Visitor contact email |
-| `budget_range` | `VARCHAR(30)` | Required | Selected project budget range |
-| `message` | `VARCHAR(1000)` | Required, 10–1000 chars | Project description / enquiry |
-| `status` | `lead_status` ENUM | Default `'new'` | Lead status: `'new'`, `'contacted'`, `'closed'` |
-| `created_at` | `TIMESTAMPTZ` | Default `now()` | Submission timestamp |
-| `updated_at` | `TIMESTAMPTZ` | Default `now()` | Last modification timestamp |
-
-### Database SQL Schema
-
-```sql
-create type lead_status as enum ('new', 'contacted', 'closed');
+4. **Create the database table** — open the Supabase SQL Editor and run:
+   ```sql
+   create type lead_status as enum ('new', 'contacted', 'closed');
 
 create table public.leads (
   id uuid primary key default gen_random_uuid(),
