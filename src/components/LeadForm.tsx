@@ -88,14 +88,13 @@ export default function LeadForm({ onSuccess }: LeadFormProps) {
           id="name"
           type="text"
           autoComplete="name"
-          placeholder="Aisha Khan"
+          placeholder="Sarwang Mangal"
           aria-invalid={!!errors.name}
           aria-describedby={errors.name ? 'name-error' : undefined}
-          className={`block w-full rounded-lg border bg-white px-3.5 py-2.5 text-sm text-slate-900 shadow-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 ${
-            errors.name
+          className={`block w-full rounded-lg border bg-white px-3.5 py-2.5 text-sm text-slate-900 shadow-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 ${errors.name
               ? 'border-red-400 focus:border-red-400'
               : 'border-slate-300 focus:border-indigo-500'
-          }`}
+            }`}
           {...register('name')}
         />
         {errors.name && (
@@ -114,14 +113,13 @@ export default function LeadForm({ onSuccess }: LeadFormProps) {
           id="email"
           type="email"
           autoComplete="email"
-          placeholder="aisha@example.com"
+          placeholder="sarwangmangal@example.com"
           aria-invalid={!!errors.email}
           aria-describedby={errors.email ? 'email-error' : undefined}
-          className={`block w-full rounded-lg border bg-white px-3.5 py-2.5 text-sm text-slate-900 shadow-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 ${
-            errors.email
+          className={`block w-full rounded-lg border bg-white px-3.5 py-2.5 text-sm text-slate-900 shadow-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 ${errors.email
               ? 'border-red-400 focus:border-red-400'
               : 'border-slate-300 focus:border-indigo-500'
-          }`}
+            }`}
           {...register('email')}
         />
         {errors.email && (
@@ -140,11 +138,10 @@ export default function LeadForm({ onSuccess }: LeadFormProps) {
           id="budgetRange"
           aria-invalid={!!errors.budgetRange}
           aria-describedby={errors.budgetRange ? 'budget-error' : undefined}
-          className={`block w-full rounded-lg border bg-white px-3.5 py-2.5 text-sm text-slate-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 ${
-            errors.budgetRange
+          className={`block w-full rounded-lg border bg-white px-3.5 py-2.5 text-sm text-slate-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 ${errors.budgetRange
               ? 'border-red-400 focus:border-red-400'
               : 'border-slate-300 focus:border-indigo-500'
-          }`}
+            }`}
           defaultValue=""
           {...register('budgetRange')}
         >
@@ -175,11 +172,10 @@ export default function LeadForm({ onSuccess }: LeadFormProps) {
           placeholder="Tell us about your project…"
           aria-invalid={!!errors.message}
           aria-describedby={errors.message ? 'message-error' : undefined}
-          className={`block w-full resize-y rounded-lg border bg-white px-3.5 py-2.5 text-sm text-slate-900 shadow-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 ${
-            errors.message
+          className={`block w-full resize-y rounded-lg border bg-white px-3.5 py-2.5 text-sm text-slate-900 shadow-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 ${errors.message
               ? 'border-red-400 focus:border-red-400'
               : 'border-slate-300 focus:border-indigo-500'
-          }`}
+            }`}
           {...register('message')}
         />
         {errors.message && (

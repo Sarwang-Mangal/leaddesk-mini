@@ -1,10 +1,10 @@
 import { z } from 'zod';
 
 export const BUDGET_OPTIONS = [
-  'Under £1,000',
-  '£1,000–£5,000',
-  '£5,000–£10,000',
-  '£10,000+',
+  'Under ₹5,000',
+  '₹5,000–₹10,000',
+  '₹10,000–₹25,000',
+  '₹25,000+',
 ] as const;
 
 export const STATUS_OPTIONS = ['new', 'contacted', 'closed'] as const;
