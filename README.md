@@ -1,9 +1,7 @@
 # LeadDesk Mini
 
-> Built for the **Digital Heroes Training Task**.
-
-Live site: _add URL after Vercel deploy_
-Admin dashboard: _add URL after Vercel deploy_
+Live site: https://leaddesk-mini-phi.vercel.app
+Admin dashboard: https://leaddesk-mini-phi.vercel.app/admin
 
 ---
 
